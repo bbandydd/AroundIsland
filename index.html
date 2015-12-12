@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2015環島</title>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script type="text/javascript" src="js/mainController.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style type="text/css">
+
+        .large-text{
+            font-size: 50px;
+        }
+
+        .middle-text{
+            font-size: 35px;
+        }
+
+        .title{
+            text-align: center;
+            position: relative;
+            top: 25%;
+        }
+
+        .info{
+            margin-bottom: 50px;
+        }
+
+        .info a {
+            color: white;
+        }
+
+    </style>
+</head>
+<body ng-app="app" ng-controller="mainController">
+    <div ng-repeat="item in items">
+        <div class="panel panel-default" ng-model="collapsed" ng-click="collapsed=!collapsed">
+        <div class="panel-heading" style="height: 200px">
+            <span class="title large-text">
+                {{ item.title }}
+            </span>
+        </div>
+        <div ng-show="collapsed" class="col-lg-12">
+            <div class="large-text info">
+                <span class="label label-primary"><a href="{{ item.url }}">{{ item.hotel }}</a></span>
+                <span class="label label-info"><a href="tel:{{ item.phone }}">{{ item.phone }}</a></span>
+                <br>
+                <span class="label label-success"><a href="https://www.google.com.tw/maps/place/{{ item.address }}">{{ item.address }}</a></span>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th class="col-lg-2 text-center middle-text">抵達時間</th>
+                      <th class="col-lg-2 text-center middle-text">離開時間</th>
+                      <th class="col-lg-6 text-center middle-text">地點</th>
+                      <th class="col-lg-2 text-center middle-text">距離(km)</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center middle-text" ng-repeat="schedule in item.scheduleList">
+                    <tr>
+                        <td>
+                            <p>
+                                {{ schedule.arrivalTime }}
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ schedule.leaveTime }}
+                            </p>
+                        </td>
+                        <td>
+                            <a href="https://www.google.com.tw/maps/dir/{{ schedule.from }}/{{ schedule.to }}">
+                                {{ schedule.location }}
+                            </a>
+                        </td>
+                        <td>
+                            <p>
+                                {{ schedule.distance }}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
