@@ -35,13 +35,13 @@
 </head>
 <body ng-app="app" ng-controller="mainController">
     <div ng-repeat="item in items">
-        <div class="panel panel-default" ng-model="collapsed" ng-click="collapsed=!collapsed">
-        <div class="panel-heading" style="height: 200px">
+        <div class="panel panel-default">
+        <div class="panel-heading" style="height: 200px" ng-click="collapsed(item);">
             <span class="title large-text">
                 {{ item.title }}
             </span>
         </div>
-        <div ng-show="collapsed" class="col-lg-12">
+        <div ng-show="item.collapsed">
             <div class="large-text info">
                 <span class="label label-primary"><a href="{{ item.url }}">{{ item.hotel }}</a></span>
                 <span class="label label-info"><a href="tel:{{ item.phone }}">{{ item.phone }}</a></span>
@@ -61,7 +61,7 @@
                     <tr>
                         <td>
                             <p>
-                                {{ schedule.arrivalTime }}
+                                {{ schedule.arrivalTime }} 
                             </p>
                         </td>
                         <td>
@@ -70,8 +70,8 @@
                             </p>
                         </td>
                         <td>
-                            <a href="https://www.google.com.tw/maps/dir/{{ schedule.from }}/{{ schedule.to }}">
-                                {{ schedule.location }}
+                            <a target="_blank" href="https://www.google.com.tw/maps/dir/{{ item.scheduleList[$index-1].mapSearchText }}/{{ schedule.mapSearchText }}">
+                                <span class="label label-success">{{ schedule.location }}</span>
                             </a>
                         </td>
                         <td>
