@@ -243,7 +243,7 @@ app.controller('mainController', ['$scope', function($scope){
                     arrivalTime: '8:30',
                     leaveTime: '8:45',
                     location: '金車伯朗咖啡館',
-                    mapSearchText: '金車伯朗咖啡館',
+                    mapSearchText: '伯朗頭城咖啡二館',
                     distance: '10'
                 },{
                     arrivalTime: '9:50',
