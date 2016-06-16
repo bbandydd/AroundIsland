@@ -8,7 +8,7 @@ app.controller('mainController', ['$scope', function($scope){
             hotel: '加賀屋',
             url: 'http://jiahewu.hlbnb.tw/about.htm',
             address: '花蓮縣玉里鎮樂合里溫泉41-2號',
-            phone: '0929282686',
+            phone: '0989282686',
             collapsed: false,
             scheduleList: [
                 {
