@@ -2,33 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2015環島</title>
     <script type="text/javascript" src="js/angular.js"></script>
     <script type="text/javascript" src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
     <script type="text/javascript" src="js/mainController.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <style type="text/css">
-
-        .large-text{
-            font-size: 50px;
-        }
-
-        .middle-text{
-            font-size: 35px;
-        }
-
         .title{
             text-align: center;
-            position: relative;
-            top: 25%;
         }
 
         .info{
             margin-bottom: 50px;
+            height: 15px;
         }
 
         .info a {
             color: white;
+        }
+
+        .info span {
+            margin-bottom: 10px;
+            display: inline-block;
         }
 
     </style>
@@ -36,13 +32,13 @@
 <body ng-app="app" ng-controller="mainController">
     <div ng-repeat="item in items">
         <div class="panel panel-default">
-        <div class="panel-heading" style="height: 200px" ng-click="collapsed(item);">
-            <span class="title large-text">
+        <div class="panel-heading title" ng-click="collapsed(item);">
+            <span>
                 {{ item.title }}
             </span>
         </div>
         <div ng-show="item.collapsed">
-            <div class="large-text info">
+            <div class="info">
                 <span class="label label-primary"><a href="{{ item.url }}">{{ item.hotel }}</a></span>
                 <span class="label label-info"><a href="tel:{{ item.phone }}">{{ item.phone }}</a></span>
                 <br>
@@ -51,17 +47,17 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                      <th class="col-lg-2 text-center middle-text">抵達時間</th>
-                      <th class="col-lg-2 text-center middle-text">離開時間</th>
-                      <th class="col-lg-6 text-center middle-text">地點</th>
-                      <th class="col-lg-2 text-center middle-text">距離(km)</th>
+                      <th class="col-lg-2 text-center">抵達時間</th>
+                      <th class="col-lg-2 text-center">離開時間</th>
+                      <th class="col-lg-6 text-center">地點</th>
+                      <th class="col-lg-2 text-center">距離(km)</th>
                     </tr>
                 </thead>
-                <tbody class="text-center middle-text" ng-repeat="schedule in item.scheduleList">
+                <tbody class="text-center" ng-repeat="schedule in item.scheduleList">
                     <tr>
                         <td>
                             <p>
-                                {{ schedule.arrivalTime }} 
+                                {{ schedule.arrivalTime }}
                             </p>
                         </td>
                         <td>
